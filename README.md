@@ -60,4 +60,34 @@ Monster cards are the player's main offensive force. They posses the following q
                 -A specified monster being on the field at the same time as the effect monster.
                 -At the player's discretion.
 ________________________________________________________________________________________________________________________________________________________________________________         
+Turn Structure:
 
+A player's turn in Yu-Gi-Oh consists of multiple steps, or "phases".
+
+    1. Draw Phase: The player draws a card from their deck and adds it to their hand. If the player has no cards remaining in their deck prior to drawing a card, the player loses. Upon successfully drawing a card, the turn automatically progressesss to Main Phase 1.
+
+    2. Main Phase 1: After completion of the Draw Phase, the player is able to do any and all of the following actions:
+        - Summon a single monster from their hand. (Either in face-up attack mode or face-down defense mode. Can only be done once per turn unless through special summon.)
+        - Play a spell card from their hand or the field. The player can play as many spell cards as they currently have in their hand or on their side of the field.
+        - Place a trap card on from their hand faced-down onto the field. The player can place as many trap cards as they currently have in their hand.
+        - Change a monster from attack mode to defense mode, or vice-versa.
+
+    3. Battle Phase: When the player has finished taking action during their Main Phase 1, they may optionally proceed to the battle phase so long as they have at-least one monster on the field in attack mode. During the battle phase, the player may declare 1 attack from each monster in attack mode on their side of the field. An attack can lead to one of the following results, depending on the conditions:
+        - If a monster attacks a monster in attack position, the monster with less attack points is destroyed, and the losing monster's player has the difference in the monsters' attack power subtracted from their lifepoints. In the case of a draw, both monsters will be destroyed and no life points will be lost.
+        - If a monster attacks a monster in defesnse position then:
+            -If the attacker's attack points are higher than the defender's defense points, the defending monster will be destroyed. No life points will be lost as a result of this outcome.
+            -If the attacker's attack points are lower than the defender's defense points, then neither monster is destroyed but the attacking player will lose life points equal to the difference of the defender's defense points and the attacker's attack points.
+            -If the attacker's attack points and the defender's defense points are equal, neither monster is destroyed and no life points are lost.
+        - If a monster attacks the opposing player directly, the monster's attack points are subtracted from the opposing player's life points. Direct attacks can only be launched when the opposing player has no monsters on their side of the field.
+    
+    4. Main Phase 2: After a player concludes their battle phase, they may optionally proceed to Main Phase 2. Main Phase 2 allows to the player to perform the following actions:
+        - Summon a single monster from their hand (Either in face-up attack mode or face-down defense mode.) if they did not already summon a monster during Main Phase 1.
+        - Play a spell card from their hand or the field. The player can play as many spell cards as they currently have in their hand or on their side of the field.
+        - Place a trap card on from their hand faced-down onto the field. The player can place as many trap cards as they currently have in their hand.
+        - Switch a monster from attack mode to defense mode, or vice-versa. Cannot be done if the monster was already switced during Main Phase 1, or if the monster made an attack during the Battle Phase.
+    
+    5. End Phase: The player's turn ends and the opposing player's turn begins. End Phase can be reached from either Main Phase 1, Battle Phase, or Main Phase 2 depending on the player's choice.
+        
+________________________________________________________________________________________________________________________________________________________________________________
+
+TODO: List controls instructions once implemented.
