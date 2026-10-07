@@ -10,9 +10,14 @@ class Card:
         self.name
         self.card_type
 
+    def __eq__(self, other):
+        if not isinstance(other, Card):
+            return False
+        return self.name == other.name and self.card_type == other.card_type
+
 class MonsterCard(Card):
     def __init__(self, name: str, rank: int, atk: int, dfc: int, effect):
-        self.mode
+        self.mode = None
         self.name = name
         self.card_type = CardType.MONSTER
         self.rank = rank

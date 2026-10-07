@@ -2,13 +2,13 @@ from card import Card, CardType
 
 class Board:
        def __init__(self):
-              field = {
+              self.field = {
                      "p1": {"f1": None, "f2": None, "f3": None, "f4": None, "f5": None,
                             "b1": None, "b2": None, "b3": None, "b4": None, "b5": None},
                      "p2": {"f1": None, "f2": None, "f3": None, "f4": None, "f5": None,
                             "b1": None, "b2": None, "b3": None, "b4": None, "b5": None}
                      }
-              grave_yard = {"p1": [], "p2": []}
+              self.grave_yard = {"p1": [], "p2": []}
 
        def place_card(self, card: Card, player: str, space: str):
               if card.card_type == CardType.MONSTER:
@@ -23,4 +23,7 @@ class Board:
                      print(f"Space {space} is already occupied.")
                      return
               self.field[player][space] = card
+
+       def get_card(self, player: str, space: str):
+              return self.field[player][space]
         
