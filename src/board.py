@@ -1,5 +1,6 @@
 from card import Card, CardType
-
+# Represents the game board, including the playing field where monsters, spells and traps are layed out, as well as the player graveyards.
+# May also store the player decks + hands in the future for ease of use.
 class Board:
        def __init__(self):
               self.field = {
@@ -10,6 +11,7 @@ class Board:
                      }
               self.grave_yard = {"p1": [], "p2": []}
 
+       # Place card on a requested spot on the board.
        def place_card(self, card: Card, player: str, space: str):
               if card.card_type == CardType.MONSTER:
                      if space.startswith("b"):
@@ -24,6 +26,23 @@ class Board:
                      return
               self.field[player][space] = card
 
+       # Retrieve a card on the board.
        def get_card(self, player: str, space: str):
               return self.field[player][space]
+       # Send a card from the field to the graveyard.
+       def to_graveyard(self, player: str, space: str):
+              card = self.field[player][space]
+              self.grave_yard[player].append(card)
+              self.field[player][space] = None
+       
+       #Retreives a card from the graveyard, removing it in the process.
+       def return_card(self, player: str, name: str):
+              card = None
+              for i in range(len(self.grave_yard[player])):
+                     if self.grave_yard[player][i].name == name:
+                            card = self.grave_yard[player][i]
+                            del self.grave_yard[player][i]
+                            return card
+              return None #Could not find the requested card
+
         
