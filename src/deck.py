@@ -8,7 +8,9 @@ class Deck:
     def shuffle(self):
         random.shuffle(self.cards)
 
-    def draw(self, count: int) -> list[Card]:
+    def draw(self, count: int) -> list[Card] | None:
+        if len(self.cards < count):
+            return None #Deck is out of cards, loss condition.
         drawn_cards = self.cards[-count:]
         del self.cards[-count:]
         return drawn_cards

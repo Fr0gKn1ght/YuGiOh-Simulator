@@ -21,13 +21,15 @@ class Game:
     def __init__(self, player_1: Player, player_2: Player, first: Turn):
         self.turns = 0 #Number of turn passed since the game began.
         self.players = [player_1, player_2]
+
         self.active_player = first
         self.state = State.GAME_START
 
     def change_state(self, next: State | None):
         match self.state:
             case State.GAME_START:
-                #TODO: Make each player draw 5 cards from their deck and then change state to the draw phase.
+                for i in range(len(self.players)):
+                    self.players[i].deck.draw(5)
                 self.state = State.DRAW_PHASE
                 return
             case State.DRAW_PHASE:
@@ -38,15 +40,32 @@ class Game:
                         self.state = State.MAIN_PHASE_1 #Draw Phase always progresses to Main Phase 1 if a game_over state has not been acheived.
                 return
             case State.MAIN_PHASE_1:
-                pass
+                match next:
+                    case State.BATTLE_PHASE:
+                        pass
+                    case State.END_PHASE:
+                        self.next_turn()
+                    case _:
+                        pass #Invalid state requested
             case State.BATTLE_PHASE:
-                pass
+                match next:
+                    case State.MAIN_PHASE_2:
+                        pass
+                    case State.END_PHASE:
+                        self.next_turn()
+                    case _:
+                        pass #Invalid state requested
             case State.MAIN_PHASE_2:
-                pass
+                match next:
+                    case State.END_PHASE:
+                        pass
+                    case _:
+                        pass #Invalid state requested
             case State.END_PHASE:
-                self.active_player = Turn.PLAYER_2 if self.active_player == Turn.PLAYER_1 else Turn.PLAYER_1
                 self.next_turn()
+            case _:
+                return 
 
     def next_turn(self):
         #TODO: Implement functionality to change player attributes depending on which player's turn it currently is.
-        pass
+        self.active_player = Turn.PLAYER_2 if self.active_player == Turn.PLAYER_1 else Turn.PLAYER_1

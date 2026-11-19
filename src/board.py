@@ -36,7 +36,7 @@ class Board:
               self.field[player][space] = None
        
        #Retreives a card from the graveyard, removing it in the process.
-       def return_card(self, player: str, name: str):
+       def retrieve_card(self, player: str, name: str):
               card = None
               for i in range(len(self.grave_yard[player])):
                      if self.grave_yard[player][i].name == name:

@@ -8,7 +8,11 @@ class Player:
         self.hand = []
 
     def draw_cards(self, num):
-        self.hand.extend(self.deck.draw(num))
+        drawn = self.deck.draw(num)
+        if drawn != None:
+            self.hand.extend(drawn)
+        else:
+            pass #TODO: Implement notification that the player's deck is out of cards
 
     def discard(self, cards: list[str]):
-        pass #TO DO: Implement function to discard card from hand to the graveyard.
+        pass #TODO: Implement function to discard card from hand to the graveyard.
