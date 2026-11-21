@@ -24,6 +24,7 @@ class Game:
 
         self.active_player = first
         self.state = State.GAME_START
+        self.board = Board(player_1.player_id, player_2.player_id)
 
     def change_state(self, next: State | None):
         match self.state:
@@ -67,5 +68,6 @@ class Game:
                 return 
 
     def next_turn(self):
-        #TODO: Implement functionality to change player attributes depending on which player's turn it currently is.
+        self.players[self.active_player].my_turn = False
         self.active_player = Turn.PLAYER_2 if self.active_player == Turn.PLAYER_1 else Turn.PLAYER_1
+        self.players[self.active_player].my_turn = True
