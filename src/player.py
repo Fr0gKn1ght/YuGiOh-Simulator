@@ -16,7 +16,9 @@ class Player:
         else:
             pass #TODO: Implement notification that the player's deck is out of cards
 
-    def discard(self, board: Board, cards: list[str]):
-        
-        board.grave_yard[self.player_id].extend(cards)
-        pass #TODO: Implement function to discard card from hand to the graveyard.
+    def discard(self, board: Board, cards: list[int]):
+        discarded = []
+        for i in range(len(cards)-1, -1, -1):
+            discarded.append(self.hand[cards[i]])
+            del self.hand[cards[i]]
+        board.grave_yard[self.player_id].extend(discarded)
