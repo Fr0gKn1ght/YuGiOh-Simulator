@@ -11,9 +11,10 @@ class Player:
 
     def draw_cards(self, num):
         drawn = self.deck.draw(num)
-        if drawn != None:
+        if drawn[-1] != "Out":
             self.hand.extend(drawn)
         else:
+            self.hand.extend(drawn[:-1])
             pass #TODO: Implement notification that the player's deck is out of cards
 
     def discard(self, board: Board, cards: list[int]):
