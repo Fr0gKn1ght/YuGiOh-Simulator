@@ -67,6 +67,9 @@ class Game:
             case _:
                 return 
 
+    def get_state(self):
+        return self.state
+
     def next_turn(self):
         self.players[self.active_player].my_turn = False
         self.active_player = Turn.PLAYER_2 if self.active_player == Turn.PLAYER_1 else Turn.PLAYER_1
