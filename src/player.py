@@ -23,3 +23,12 @@ class Player:
             discarded.append(self.hand[cards[i]])
             del self.hand[cards[i]]
         board.grave_yard[self.player_id].extend(discarded)
+
+    def take_damage(self, damage: int):
+        self.life_points -= damage
+        if self.life_points <= 0:
+            self.life_points = 0
+            #TODO: Implement notification that the player is out of life points
+    
+    def restore_life(self, amount: int):
+        self.life_points += amount
