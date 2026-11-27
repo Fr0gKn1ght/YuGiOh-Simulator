@@ -26,6 +26,8 @@ class Game:
         self.state = State.GAME_START
         self.board = Board(player_1.player_id, player_2.player_id)
 
+        self.command_queue = []
+
     def change_state(self, next: State | None):
         match self.state:
             case State.GAME_START:
@@ -74,3 +76,7 @@ class Game:
         self.players[self.active_player].my_turn = False
         self.active_player = Turn.PLAYER_2 if self.active_player == Turn.PLAYER_1 else Turn.PLAYER_1
         self.players[self.active_player].my_turn = True
+        
+    def update(self):
+        while(self.command_queue):
+            pass
